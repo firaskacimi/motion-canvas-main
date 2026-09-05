@@ -86,7 +86,6 @@ export function SelectedWork() {
           >
             {projects.map((p, i) => {
               const angle = (360 / projects.length) * i;
-              const radius = 680;
 
               return (
                 <div
@@ -96,7 +95,7 @@ export function SelectedWork() {
                     transform: `
                       translate(-50%, -50%)
                       rotateY(${angle}deg)
-                      translateZ(${radius}px)
+                      translateZ(clamp(220px, 47vw, 680px))
                     `,
                     transformStyle: "preserve-3d",
                   }}
