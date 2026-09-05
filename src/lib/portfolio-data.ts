@@ -1,7 +1,9 @@
 import heroCenter from "@/assets/hero-center.jpg";
-import portrait from "@/assets/portrait.jpg";
 
-export { heroCenter, portrait };
+export const portrait =
+  "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788624445/Gemini_Generated_Image_nisthcnisthcnist_eobnvm.png";
+
+export { heroCenter };
 
 export type Frame = {
   id: string;
@@ -188,43 +190,43 @@ export const projects: Project[] = [
 export const services = [
   {
     n: "01",
-    title: "Video Editing",
-    body: "From raw footage to a finished story.",
+    title: "Design",
+    body: "Make ideas visible. Creating clear, coherent and engaging visual assets adapted to the needs of a campaign.",
   },
   {
     n: "02",
-    title: "Motion Design",
-    body: "Titles, transitions, typography, animated graphics and visual effects.",
+    title: "Video",
+    body: "Turn moments into stories. From filming to editing, transforming ideas and events into dynamic visual content.",
   },
   {
     n: "03",
-    title: "Social Content",
-    body: "Short-form content designed for Reels, TikTok, YouTube Shorts and social campaigns.",
+    title: "Photography",
+    body: "Capture the moment. Documenting events and preserving the moments that tell the story of an organization.",
   },
   {
     n: "04",
-    title: "Color Grading",
-    body: "Cinematic color correction and visual consistency.",
+    title: "Communication",
+    body: "Give ideas a voice. Thinking about messaging, storytelling and how a project can be effectively communicated.",
   },
   {
     n: "05",
-    title: "Visual Design",
-    body: "Thumbnails, campaign visuals, graphics and supporting assets.",
+    title: "Team Coordination",
+    body: "Make people work better together. Working with a team, distributing responsibilities and helping productions move from idea to final delivery.",
   },
   {
     n: "06",
-    title: "Creative Direction",
-    body: "Helping shape the visual language of a project from concept to final cut.",
+    title: "Competitive Intelligence",
+    body: "Observe. Compare. Learn. Analyzing communication strategies, trends and practices to identify relevant opportunities for ASEPA.",
   },
 ];
 
 export const processSteps = [
-  { n: "01", title: "Discover", body: "Understand the idea, audience and visual direction." },
-  { n: "02", title: "Select", body: "Organize footage and find the moments that matter." },
-  { n: "03", title: "Edit", body: "Build the rhythm, structure and story." },
-  { n: "04", title: "Design", body: "Add motion, typography, graphics and visual identity." },
-  { n: "05", title: "Polish", body: "Color, sound, transitions and final details." },
-  { n: "06", title: "Deliver", body: "Export optimized content ready for its platform." },
+  { n: "01", title: "Understand", body: "Understand the project, its objective and its audience." },
+  { n: "02", title: "Plan", body: "Define the message, needs and responsibilities." },
+  { n: "03", title: "Create", body: "Turn the idea into meaningful content." },
+  { n: "04", title: "Collaborate", body: "Work with everyone involved in the project." },
+  { n: "05", title: "Refine", body: "Receive feedback, improve and finalize." },
+  { n: "06", title: "Deliver", body: "Deliver the right content, at the right time, in the right place." },
 ];
 
 export const testimonials = [

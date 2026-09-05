@@ -1,8 +1,8 @@
 const links = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
+  { label: "Skills", href: "#services" },
+  { label: "Candidacy", href: "#contact" },
 ];
 
 const socials = [
@@ -16,10 +16,12 @@ export function Footer() {
     <footer className="border-t border-border">
       <div className="mx-auto flex max-w-[1600px] flex-col gap-10 px-5 py-14 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="font-display text-3xl sm:text-4xl">Your Name</p>
+          <p className="font-display text-3xl sm:text-4xl">Abdeldjalil Sanadiki</p>
           <p className="mt-2 text-[0.62rem] tracking-[0.26em] text-muted-foreground uppercase">
-            Video Editor · Visual Designer
+            Candidate · Vice-President Marketing & Publicité
           </p>
+          <p className="mt-3 font-display text-xl">People before productions.</p>
+          <p className="mt-2 text-[0.62rem] tracking-[0.26em] text-primary uppercase">ASEPA · 2026—2027</p>
         </div>
 
         <nav className="flex flex-wrap gap-6">
@@ -48,7 +50,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border py-5">
         <p className="mx-auto max-w-[1600px] px-5 text-[0.6rem] tracking-[0.22em] text-muted-foreground uppercase sm:px-8">
-          © {new Date().getFullYear()} Your Name — All rights reserved
+          © 2026 Abdeldjalil Sanadiki — ASEPA
         </p>
       </div>
     </footer>

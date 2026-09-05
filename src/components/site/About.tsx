@@ -1,7 +1,7 @@
 import { portrait } from "@/lib/portfolio-data";
 import { Reveal, SectionLabel } from "./Reveal";
 
-const facts = ["Video Editing", "Motion Design", "Visual Storytelling", "Creative Direction"];
+const facts = ["Video Production", "Visual Design", "Team Coordination", "Communication"];
 
 export function About() {
   return (
@@ -23,19 +23,33 @@ export function About() {
 
         <div className="flex flex-col justify-center">
           <Reveal>
-            <SectionLabel>About</SectionLabel>
-            <h2 className="font-display mt-5 text-[clamp(2.6rem,7vw,6rem)]">Behind the Edit</h2>
+            <SectionLabel>Behind the Work</SectionLabel>
+            <h2 className="font-display mt-5 text-[clamp(2.6rem,7vw,6rem)]">Who Is Djalil?</h2>
           </Reveal>
 
           <Reveal delay={0.1}>
             <div className="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               <p>
-                I'm a video editor and visual designer focused on turning ideas into visuals
-                that feel intentional, cinematic and memorable.
+                Pharmacy student. Creator. Team player. Problem solver.
               </p>
               <p>
-                I work across editing, motion design and visual storytelling — from short-form
-                social content to polished commercial and creative projects.
+                I am a curious person who enjoys understanding how things work, learning new
+                skills and putting them into practice.
+              </p>
+              <p>
+                Visual creation was one of my first ways into this world. But over time, I realized
+                that what truly interests me goes beyond creation: understanding an idea,
+                transforming it, working with a team and finding the best way to bring it to life.
+              </p>
+              <p>
+                At ASEPA, this curiosity gradually led me to explore different sides of the
+                organization. From competitive intelligence to filming, from video coordination to
+                financial and stock management, each experience expanded the way I see teamwork and
+                associative work.
+              </p>
+              <p>
+                Today, I no longer define myself only by what I can produce, but by what I can
+                build with others.
               </p>
             </div>
           </Reveal>

@@ -15,8 +15,8 @@ export function Process() {
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-24 sm:px-8 sm:py-32">
       <Reveal>
-        <SectionLabel>Process</SectionLabel>
-        <h2 className="font-display mt-5 text-[clamp(2.6rem,8vw,7rem)]">From Raw to Final</h2>
+        <SectionLabel>What I Learned</SectionLabel>
+        <h2 className="font-display mt-5 text-[clamp(2.6rem,8vw,7rem)]">The Journey</h2>
       </Reveal>
 
       <div ref={ref} className="relative mt-14 sm:mt-20">
@@ -50,6 +50,9 @@ export function Process() {
           ))}
         </ol>
       </div>
+      <p className="mt-12 font-display text-2xl text-foreground sm:text-4xl">
+        THE FINAL PRODUCT IS ONLY THE VISIBLE PART.
+      </p>
     </section>
   );
 }

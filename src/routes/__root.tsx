@@ -73,18 +73,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Your Name — Video Editor & Visual Designer" },
+      { title: "Abdeldjalil Sanadiki — ASEPA" },
       {
         name: "description",
         content:
-          "Cinematic editing, motion design and visual direction for brands, artists and social campaigns.",
+          "Pharmacy student and ASEPA candidate for Vice-President Marketing & Publicité.",
       },
-      { name: "author", content: "Your Name" },
-      { property: "og:title", content: "Your Name — Video Editor & Visual Designer" },
+      { name: "author", content: "Abdeldjalil Sanadiki" },
+      { property: "og:title", content: "Abdeldjalil Sanadiki — ASEPA" },
       {
         property: "og:description",
         content:
-          "Cinematic editing, motion design and visual direction for brands, artists and social campaigns.",
+          "Pharmacy student and ASEPA candidate for Vice-President Marketing & Publicité.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -2,10 +2,8 @@ import { Reveal, SectionLabel } from "./Reveal";
 import { MagneticButton } from "./MagneticButton";
 
 const socials = [
-  { label: "Email", href: "mailto:hello@yourname.com" },
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "Behance", href: "https://behance.net" },
+  { label: "ASEPA", href: "#contact" },
+  { label: "Candidacy", href: "#" },
 ];
 
 export function Contact() {
@@ -18,26 +16,37 @@ export function Contact() {
       />
       <div className="relative mx-auto max-w-[1600px] px-5 sm:px-8">
         <Reveal>
-          <SectionLabel>Contact</SectionLabel>
+          <SectionLabel>What's Next?</SectionLabel>
           <h2 className="font-display mt-6 text-[clamp(2.8rem,11vw,11rem)]">
-            Have a project
+            What's next?
             <br />
-            in mind?
+            From creating to building.
           </h2>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <p className="max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Tell me what you're working on, what you need edited, and where you want to take
-              it.
+              After several experiences within ASEPA, I want to put everything I have learned
+              toward a new step. Not simply to produce more. But to contribute to building a
+              Marketing & Publicité volet that is more structured, more formative, more coherent,
+              more strategic and more sustainable.
             </p>
-            <MagneticButton href="mailto:hello@yourname.com">Start a project</MagneticButton>
+            {/* TODO: Replace with final written candidacy link */}
+            <MagneticButton href="#">Discover my candidacy</MagneticButton>
           </div>
         </Reveal>
 
         <Reveal delay={0.16}>
-          <ul className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border lg:grid-cols-4">
+          <div className="mt-16 max-w-xl">
+            <p className="text-[0.62rem] tracking-[0.24em] text-primary uppercase">Candidate for</p>
+            <p className="mt-3 font-display text-4xl sm:text-6xl">Vice-President</p>
+            <p className="font-display text-3xl sm:text-5xl">Marketing & Publicité</p>
+            <p className="mt-8 font-display text-2xl text-foreground sm:text-4xl">
+              PEOPLE BEFORE PRODUCTIONS.
+            </p>
+          </div>
+          <ul className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border">
             {socials.map((s) => (
               <li key={s.label}>
                 <a

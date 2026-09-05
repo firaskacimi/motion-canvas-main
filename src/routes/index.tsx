@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { Cursor } from "@/components/site/Cursor";
 import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { Marquee } from "@/components/site/Marquee";
@@ -12,9 +11,9 @@ import { Process } from "@/components/site/Process";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
-const title = "Your Name — Video Editor & Visual Designer";
+const title = "Abdeldjalil Sanadiki — ASEPA";
 const description =
-  "Portfolio of a video editor, motion designer and visual designer: brand films, social campaigns, music videos, commercials, motion design and color grading.";
+  "Abdeldjalil Sanadiki, Pharmacy student and ASEPA candidate for Vice-President Marketing & Publicité.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,8 +31,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="md:cursor-none">
-      <Cursor />
+    <div>
       <Navbar />
       <main>
         <Hero />

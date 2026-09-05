@@ -28,11 +28,17 @@ export function FrameCard({
           className="h-full w-full object-cover opacity-80 transition-opacity duration-500 group-hover:opacity-100"
           src={frame.video}
           poster={frame.poster}
-          autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
+          onMouseEnter={(event) => {
+            void event.currentTarget.play().catch(() => undefined);
+          }}
+          onMouseLeave={(event) => {
+            event.currentTarget.pause();
+            event.currentTarget.currentTime = 0;
+          }}
         />
       ) : (
         <img

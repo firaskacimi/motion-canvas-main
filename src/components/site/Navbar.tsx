@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 const LINKS = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
+  { label: "Skills", href: "#services" },
+  { label: "Candidacy", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -44,7 +44,7 @@ export function Navbar() {
             className="font-display text-base tracking-[0.16em] sm:text-lg"
             data-cursor="go"
           >
-            Your Name
+            Abdeldjalil Sanadiki
           </a>
 
           <ul className="hidden items-center gap-9 md:flex">
@@ -66,7 +66,7 @@ export function Navbar() {
               data-cursor="go"
               className="hidden rounded-full border border-border px-5 py-2.5 text-[0.65rem] tracking-[0.22em] uppercase transition-colors hover:border-primary hover:text-primary lg:inline-flex"
             >
-              Let's work together
+              Discover my candidacy
             </a>
             <button
               onClick={() => setOpen(true)}
@@ -89,7 +89,7 @@ export function Navbar() {
             className="fixed inset-0 z-[60] flex flex-col bg-background/98 backdrop-blur-2xl md:hidden"
           >
             <div className="flex h-16 items-center justify-between px-5">
-              <span className="font-display text-base tracking-[0.16em]">Your Name</span>
+              <span className="font-display text-base tracking-[0.16em]">Abdeldjalil Sanadiki</span>
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
@@ -122,7 +122,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="flex w-full items-center justify-center rounded-full bg-primary px-6 py-4 text-[0.7rem] tracking-[0.22em] text-primary-foreground uppercase"
               >
-                Let's work together
+                Discover my candidacy
               </a>
             </div>
           </motion.div>

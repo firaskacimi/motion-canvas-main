@@ -1,11 +1,12 @@
 import { motion } from "motion/react";
-import { Play } from "lucide-react";
 import { frames } from "@/lib/portfolio-data";
 import { ReelRow } from "./ReelRow";
 import { MagneticButton } from "./MagneticButton";
 
 const heroVideo =
   "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788619258/logo_animation_esldrc.mp4";
+const heroPoster =
+  "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788619258/logo_animation_esldrc.jpg";
 
 const rotate = (arr: typeof frames, n: number) => [...arr.slice(n), ...arr.slice(0, n)];
 
@@ -31,15 +32,15 @@ export function Hero() {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-70" />
               <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
             </span>
-            Available for selected projects
+            ASEPA · MARKETING & PUBLICITÉ · 2026—2027
           </span>
           <span className="text-[0.6rem] tracking-[0.24em] text-muted-foreground uppercase">
-            Video Editor · Motion Designer · Visual Designer
+            Pharmacy Student · ASEPA
           </span>
         </motion.div>
 
         <h1 className="font-display mt-8 text-[clamp(3.2rem,13vw,13rem)]">
-          {["Video Editor", "& Visual Designer"].map((line, i) => (
+          {["GET READY!"].map((line, i) => (
             <span key={line} className="block overflow-hidden">
               <motion.span
                 className="block"
@@ -89,19 +90,15 @@ export function Hero() {
               >
                 <video
                   src={heroVideo}
+                  poster={heroPoster}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/25" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="flex size-16 items-center justify-center rounded-full bg-primary/90 text-primary-foreground shadow-[0_0_60px_-10px_var(--primary)] transition-transform duration-500 group-hover:scale-110 sm:size-20">
-                    <Play className="size-5 fill-current sm:size-6" />
-                  </span>
-                </div>
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 sm:p-6">
                   <div>
                     <p className="font-display text-lg sm:text-2xl">Showreel 2026</p>
@@ -134,13 +131,18 @@ export function Hero() {
 
       <div className="relative mx-auto mt-12 flex max-w-[1600px] flex-col gap-8 px-5 sm:mt-16 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
         <p className="max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
-          I turn raw footage, ideas and visuals into content that people actually want to
-          watch.
+          A journey through creativity, teamwork & communication.
+          <span className="mt-3 block font-display text-2xl text-foreground sm:text-3xl">
+            ABDELDJALIL SANADIKI
+          </span>
+          <span className="mt-2 block text-[0.62rem] tracking-[0.24em] text-primary uppercase">
+            PEOPLE BEFORE PRODUCTIONS.
+          </span>
         </p>
         <div className="flex flex-wrap gap-3">
-          <MagneticButton href="#work">View my work</MagneticButton>
+          <MagneticButton href="#work">Explore my journey</MagneticButton>
           <MagneticButton href="#contact" variant="ghost">
-            Let's work together
+            Discover my candidacy
           </MagneticButton>
         </div>
       </div>

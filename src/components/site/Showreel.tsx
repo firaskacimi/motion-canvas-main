@@ -232,16 +232,16 @@ export function Showreel() {
       <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <SectionLabel>Selected Work</SectionLabel>
+            <SectionLabel>Through the Lens</SectionLabel>
 
             <h2 className="font-display mt-5 text-[clamp(2.8rem,8vw,7rem)] leading-[0.9]">
-              Watch the Reel
+              Through the Lens
             </h2>
           </div>
 
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-base">
-            A collection of films, campaigns, events, motion work and visual
-            experiments.
+            A glimpse into some of the projects, campaigns and moments I had the opportunity to
+            work on at ASEPA.
           </p>
         </div>
       </div>
@@ -430,11 +430,11 @@ export function Showreel() {
                   src={video.src}
                   poster={video.poster}
                   className="absolute inset-0 h-full w-full object-cover"
-                  autoPlay
+                  autoPlay={isActive}
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload={isActive ? "auto" : "none"}
                 />
 
                 {/* ===========================================

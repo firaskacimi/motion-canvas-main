@@ -37,11 +37,20 @@ export function SelectedWork() {
       className="mx-auto max-w-[1600px] overflow-hidden px-5 py-24 sm:px-8 sm:py-32"
     >
       <Reveal>
-        <SectionLabel>{`${projects.length} Projects`}</SectionLabel>
+        <SectionLabel>Selected Work</SectionLabel>
 
         <h2 className="font-display mt-5 text-[clamp(2.6rem,8vw,7rem)]">
-          Selected Work
+          Productions
         </h2>
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <span className="font-display text-2xl text-foreground sm:text-3xl">MORE THAN JUST CREATING.</span>
+          <br />
+          Throughout my journey at ASEPA, I had the opportunity to work across different formats
+          and communication needs: graphic design, video, photography, writing and campaign
+          valorisation. Each production helped me develop a different skill, but more importantly,
+          it taught me that good content is not only about how it looks. It needs to serve a
+          purpose, communicate a message and fit into a coherent communication strategy.
+        </p>
       </Reveal>
 
       <Reveal>
