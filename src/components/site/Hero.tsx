@@ -27,7 +27,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-wrap items-center justify-between gap-4"
         >
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-border px-3.5 py-1.5 text-[0.6rem] tracking-[0.24em] text-muted-foreground uppercase">
+          <span className="inline-flex max-w-full items-center gap-2.5 rounded-full border border-border px-4 py-2 text-[0.72rem] leading-tight tracking-[0.16em] text-muted-foreground uppercase sm:px-5 sm:py-2.5 sm:text-sm sm:tracking-[0.2em]">
             <span className="relative flex size-1.5">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-70" />
               <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
@@ -101,14 +101,11 @@ export function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/25" />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 sm:p-6">
                   <div>
-                    <p className="font-display text-lg sm:text-2xl">Showreel 2026</p>
+                   
                     <p className="mt-1 text-[0.6rem] tracking-[0.26em] text-primary uppercase">
                       Editing · Motion · Grade
                     </p>
                   </div>
-                  <p className="hidden text-[0.6rem] tracking-[0.26em] text-muted-foreground uppercase sm:block">
-                    02:14
-                  </p>
                 </div>
               </div>
             </motion.div>

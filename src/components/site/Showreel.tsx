@@ -1,4 +1,3 @@
-
 import {
   motion,
   AnimatePresence,
@@ -71,12 +70,6 @@ export function Showreel() {
     (typeof videos)[number] | null
   >(null);
 
-  /*
-   * ----------------------------------------
-   * NAVIGATION
-   * ----------------------------------------
-   */
-
   const nextVideo = () => {
     setCurrentIndex((current) => (current + 1) % videos.length);
   };
@@ -91,15 +84,8 @@ export function Showreel() {
     setCurrentIndex(index);
   };
 
-  /*
-   * ----------------------------------------
-   * CALCULATE CARD POSITION
-   * ----------------------------------------
-   */
-
   const getRelativePosition = (index: number) => {
     const total = videos.length;
-
     let difference = index - currentIndex;
 
     if (difference > total / 2) {
@@ -112,12 +98,6 @@ export function Showreel() {
 
     return difference;
   };
-
-  /*
-   * ----------------------------------------
-   * KEYBOARD CONTROLS
-   * ----------------------------------------
-   */
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -137,16 +117,8 @@ export function Showreel() {
     };
   }, []);
 
-  /*
-   * ----------------------------------------
-   * ESCAPE MODAL
-   * ----------------------------------------
-   */
-
   useEffect(() => {
-    if (!selectedVideo) {
-      return;
-    }
+    if (!selectedVideo) return;
 
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -160,12 +132,6 @@ export function Showreel() {
       window.removeEventListener("keydown", handleEscape);
     };
   }, [selectedVideo]);
-
-  /*
-   * ----------------------------------------
-   * SWIPE / DRAG
-   * ----------------------------------------
-   */
 
   const handleDragEnd = (
     _: MouseEvent | TouchEvent | PointerEvent,
@@ -192,11 +158,8 @@ export function Showreel() {
   const activeVideo = videos[currentIndex]!;
 
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32">
-      {/* =====================================================
-          BACKGROUND
-      ====================================================== */}
-
+    <section className="relative overflow-hidden py-16 sm:py-28">
+      {/* BACKGROUND GLOWS */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <motion.div
           animate={{
@@ -208,7 +171,7 @@ export function Showreel() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute left-[15%] top-[20%] h-125 w-125 rounded-full bg-primary/20 blur-[140px]"
+          className="absolute left-[15%] top-[20%] size-96 rounded-full bg-primary/20 blur-[120px] sm:size-125 sm:blur-[140px]"
         />
 
         <motion.div
@@ -221,73 +184,39 @@ export function Showreel() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute right-[10%] top-[30%] h-112.5 w-112.5 rounded-full bg-fuchsia-500/15 blur-[140px]"
+          className="absolute right-[10%] top-[30%] size-80 rounded-full bg-fuchsia-500/15 blur-[120px] sm:size-112.5 sm:blur-[140px]"
         />
       </div>
 
-      {/* =====================================================
-          HEADER
-      ====================================================== */}
-
+      {/* HEADER */}
       <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <SectionLabel>Through the Lens</SectionLabel>
 
-            <h2 className="font-display mt-5 text-[clamp(2.8rem,8vw,7rem)] leading-[0.9]">
+            <h2 className="font-display mt-4 text-[clamp(2.5rem,7vw,6.5rem)] leading-[0.9]">
               Through the Lens
             </h2>
           </div>
 
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-base">
-            A glimpse into some of the projects, campaigns and moments I had the opportunity to
-            work on at ASEPA.
+            A glimpse into some of the projects, campaigns and moments I had
+            the opportunity to work on at ASEPA.
           </p>
         </div>
       </div>
 
-      {/* =====================================================
-          CAROUSEL
-      ====================================================== */}
-
-      <div className="relative mt-14 w-full px-5 sm:mt-20 sm:px-10 lg:px-16">
+      {/* CAROUSEL */}
+      <div className="relative mt-10 w-full px-4 sm:mt-16 sm:px-10 lg:px-16">
         <div
-          className="
-            relative
-            h-135
-            w-full
-            overflow-visible
-            sm:h-150
-            lg:h-165
-          "
+          className="relative h-120 w-full overflow-hidden sm:h-150 sm:overflow-visible lg:h-165"
           style={{
             perspective: "1600px",
           }}
         >
-          {/* =================================================
-              CARDS
-          ================================================== */}
-
           {videos.map((video, index) => {
             const position = getRelativePosition(index);
             const isActive = position === 0;
-
-            /*
-             * ALL VIDEOS REMAIN MOUNTED.
-             *
-             * This is important because we want every video
-             * to autoplay and continue playing in the carousel.
-             */
-
-            /*
-             * Position:
-             *
-             * Center      = 0%
-             * Near left   = -82%
-             * Near right  = 82%
-             * Far left    = -155%
-             * Far right   = 155%
-             */
 
             const x =
               position === 0
@@ -304,10 +233,6 @@ export function Showreel() {
                           ? "-220%"
                           : "220%";
 
-            /*
-             * CENTER IS BIGGER THAN THE TWO BEHIND IT.
-             */
-
             const scale =
               position === 0
                 ? 1
@@ -317,33 +242,21 @@ export function Showreel() {
                     ? 0.62
                     : 0.5;
 
-            /*
-             * Opacity.
-             *
-             * The two adjacent videos remain clearly visible.
-             */
-
             const opacity =
               position === 0
                 ? 1
                 : Math.abs(position) === 1
-                  ? 0.7
+                  ? 0.6
                   : Math.abs(position) === 2
-                    ? 0.3
+                    ? 0.25
                     : 0;
-
-            /*
-             * Blur the background cards slightly.
-             */
 
             const blur =
               position === 0
                 ? "blur(0px)"
                 : Math.abs(position) === 1
-                  ? "blur(1px)"
-                  : Math.abs(position) === 2
-                    ? "blur(3px)"
-                    : "blur(5px)";
+                  ? "blur(2px)"
+                  : "blur(5px)";
 
             return (
               <motion.div
@@ -352,27 +265,33 @@ export function Showreel() {
                   absolute
                   left-1/2
                   top-1/2
+
+                  /* PHONE: smaller cards */
                   aspect-9/16
-                  w-[min(70vw,420px)]
+                  w-[62vw]
+
+                  /* PC: EXACTLY THE ORIGINAL SIZE */
+                  sm:w-[min(82vw,380px)]
+
                   -translate-x-1/2
                   -translate-y-1/2
                   overflow-hidden
                   rounded-[2rem]
-                  grain
+                  border
+                  border-white/10
+                  bg-black/40
+                  shadow-xl
                   group
-                  ring-1
-                  ring-white/10
                   ${
                     isActive
-                      ? "cursor-grab active:cursor-grabbing"
-                      : "cursor-pointer"
+                      ? "cursor-grab active:cursor-grabbing opacity-100 pointer-events-auto"
+                      : "cursor-pointer max-sm:pointer-events-none max-sm:opacity-0"
                   }
                 `}
-                data-video-card
                 animate={{
                   x,
                   scale,
-                  opacity,
+                  opacity: isActive ? 1 : opacity,
                   filter: blur,
                   zIndex: isActive
                     ? 30
@@ -391,11 +310,10 @@ export function Showreel() {
                     damping: 24,
                   },
                   opacity: {
-                    duration: 0.35,
-                    ease: [0.16, 1, 0.3, 1],
+                    duration: 0.3,
                   },
                   filter: {
-                    duration: 0.35,
+                    duration: 0.3,
                   },
                 }}
                 drag={isActive ? "x" : false}
@@ -406,9 +324,7 @@ export function Showreel() {
                 dragElastic={0.15}
                 onDragStart={() => setIsDragging(true)}
                 onDragEnd={handleDragEnd}
-                whileDrag={{
-                  scale: 1.02,
-                }}
+                whileDrag={{ scale: 1.02 }}
                 onClick={() => {
                   if (!isDragging) {
                     if (!isActive) {
@@ -422,10 +338,6 @@ export function Showreel() {
                   transformStyle: "preserve-3d",
                 }}
               >
-                {/* ===========================================
-                    VIDEO
-                ============================================ */}
-
                 <video
                   src={video.src}
                   poster={video.poster}
@@ -437,33 +349,20 @@ export function Showreel() {
                   preload={isActive ? "auto" : "none"}
                 />
 
-                {/* ===========================================
-                    DARK OVERLAY
-                ============================================ */}
-
+                {/* OVERLAYS */}
                 <div
                   className={`
-                    absolute inset-0
+                    absolute
+                    inset-0
                     transition-opacity
-                    duration-500
-                    ${
-                      isActive
-                        ? "bg-black/10"
-                        : "bg-black/35"
-                    }
+                    duration-300
+                    ${isActive ? "bg-black/10" : "bg-black/50"}
                   `}
                 />
 
-                {/* ===========================================
-                    GRADIENT
-                ============================================ */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/10" />
 
-                <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/90 via-black/10 to-black/20" />
-
-                {/* ===========================================
-                    CENTER PLAY
-                ============================================ */}
-
+                {/* PLAY BUTTON */}
                 {isActive && (
                   <motion.div
                     initial={{
@@ -475,56 +374,29 @@ export function Showreel() {
                       scale: 1,
                     }}
                     transition={{
-                      duration: 0.45,
-                      delay: 0.1,
+                      duration: 0.3,
                     }}
                     className="pointer-events-none absolute inset-0 flex items-center justify-center"
                   >
-                    <span
-                      className="
-                        flex
-                        size-20
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-white/95
-                        text-black
-                        shadow-[0_0_80px_rgba(255,255,255,0.25)]
-                        transition-transform
-                        duration-500
-                        group-hover:scale-110
-                        sm:size-24
-                      "
-                    >
-                      <Play className="ml-1 size-7 fill-current" />
+                    <span className="flex size-16 items-center justify-center rounded-full bg-white/95 text-black shadow-lg transition-transform duration-300 group-hover:scale-110 sm:size-20">
+                      <Play className="ml-1 size-6 fill-current sm:size-7" />
                     </span>
                   </motion.div>
                 )}
 
-                {/* ===========================================
-                    INFO
-                ============================================ */}
-
-                <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8">
+                {/* CARD INFO */}
+                <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-7">
                   <div className="flex items-end justify-between gap-4">
                     <div>
-                      <span className="mb-2 block text-[0.6rem] font-medium tracking-[0.3em] text-white/60 uppercase">
+                      <span className="mb-1.5 block text-[0.6rem] font-medium tracking-[0.25em] text-white/70 uppercase">
                         {video.category}
                       </span>
 
-                      <h3
-                        className="
-                          font-display
-                          text-2xl
-                          text-white
-                          sm:text-3xl
-                          lg:text-4xl
-                        "
-                      >
+                      <h3 className="font-display text-xl text-white sm:text-2xl lg:text-3xl">
                         {video.title}
                       </h3>
 
-                      <span className="mt-2 block text-xs tracking-[0.2em] text-white/50 uppercase">
+                      <span className="mt-1 block text-[0.65rem] tracking-[0.2em] text-white/50 uppercase">
                         {video.duration}
                       </span>
                     </div>
@@ -536,24 +408,8 @@ export function Showreel() {
                           event.stopPropagation();
                           setSelectedVideo(video);
                         }}
-                        className="
-                          hidden
-                          size-11
-                          shrink-0
-                          items-center
-                          justify-center
-                          rounded-full
-                          border
-                          border-white/20
-                          bg-white/10
-                          backdrop-blur-md
-                          transition-all
-                          hover:scale-110
-                          hover:bg-white
-                          hover:text-black
-                          sm:flex
-                        "
-                        aria-label="Open video"
+                        className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition hover:scale-105 sm:hidden"
+                        aria-label="Open fullscreen video"
                       >
                         <Maximize2 className="size-4" />
                       </button>
@@ -563,53 +419,20 @@ export function Showreel() {
               </motion.div>
             );
           })}
-
-          {/* =================================================
-              SIDE FADE
-          ================================================== */}
-
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-40 w-[4%] bg-linear-to-r from-background to-transparent" />
-
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-40 w-[4%] bg-linear-to-l from-background to-transparent" />
         </div>
 
-        {/* ===================================================
-            CONTROLS
-        ==================================================== */}
-
-        <div className="relative z-50 mt-6 flex items-center justify-center gap-5 sm:mt-8">
-          {/* PREVIOUS */}
-
+        {/* CONTROLS */}
+        <div className="relative z-50 mt-6 flex items-center justify-center gap-4 sm:mt-8">
           <button
             type="button"
             onClick={previousVideo}
             aria-label="Previous video"
-            className="
-              flex
-              size-12
-              items-center
-              justify-center
-              rounded-full
-              border
-              border-border
-              bg-background/80
-              text-foreground
-              backdrop-blur-md
-              transition-all
-              duration-300
-              hover:scale-110
-              hover:border-primary
-              hover:bg-primary
-              hover:text-primary-foreground
-              sm:size-14
-            "
+            className="flex size-11 items-center justify-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground sm:size-14"
           >
             <ChevronLeft className="size-5 sm:size-6" />
           </button>
 
-          {/* DOTS */}
-
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             {videos.map((video, index) => {
               const active = index === currentIndex;
 
@@ -623,7 +446,7 @@ export function Showreel() {
                 >
                   <motion.span
                     animate={{
-                      width: active ? 32 : 7,
+                      width: active ? 28 : 6,
                       opacity: active ? 1 : 0.35,
                     }}
                     transition={{
@@ -638,47 +461,24 @@ export function Showreel() {
             })}
           </div>
 
-          {/* NEXT */}
-
           <button
             type="button"
             onClick={nextVideo}
             aria-label="Next video"
-            className="
-              flex
-              size-12
-              items-center
-              justify-center
-              rounded-full
-              border
-              border-border
-              bg-background/80
-              text-foreground
-              backdrop-blur-md
-              transition-all
-              duration-300
-              hover:scale-110
-              hover:border-primary
-              hover:bg-primary
-              hover:text-primary-foreground
-              sm:size-14
-            "
+            className="flex size-11 items-center justify-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground sm:size-14"
           >
             <ChevronRight className="size-5 sm:size-6" />
           </button>
         </div>
 
-        {/* ===================================================
-            CURRENT VIDEO LABEL
-        ==================================================== */}
-
-        <div className="mt-5 flex justify-center">
+        {/* LABEL */}
+        <div className="mt-4 flex justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeVideo.title}
               initial={{
                 opacity: 0,
-                y: 8,
+                y: 6,
               }}
               animate={{
                 opacity: 1,
@@ -686,14 +486,14 @@ export function Showreel() {
               }}
               exit={{
                 opacity: 0,
-                y: -8,
+                y: -6,
               }}
               transition={{
-                duration: 0.25,
+                duration: 0.2,
               }}
               className="text-center"
             >
-              <span className="text-[0.6rem] tracking-[0.35em] text-muted-foreground uppercase">
+              <span className="text-[0.6rem] tracking-[0.3em] text-muted-foreground uppercase">
                 {String(currentIndex + 1).padStart(2, "0")} /{" "}
                 {String(videos.length).padStart(2, "0")}
               </span>
@@ -702,54 +502,40 @@ export function Showreel() {
         </div>
       </div>
 
-      {/* =====================================================
-          FULLSCREEN MODAL
-      ====================================================== */}
-
+      {/* FULLSCREEN MODAL */}
       <AnimatePresence>
         {selectedVideo && (
           <motion.div
-            className="fixed inset-0 z-100 flex items-center justify-center bg-black/85 p-5 backdrop-blur-md sm:p-8"
+            className="fixed inset-0 z-100 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md sm:p-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedVideo(null)}
             role="dialog"
             aria-modal="true"
-            aria-label={`${selectedVideo.title} video`}
           >
             <motion.div
-              className="
-                relative
-                aspect-9/16
-                h-[82vh]
-                w-auto
-                max-w-[88vw]
-                overflow-hidden
-                rounded-[1.5rem]
-                bg-black
-                shadow-2xl
-                ring-1
-                ring-white/15
-              "
+              className="relative aspect-9/16 h-[80vh] w-auto max-w-[90vw] overflow-hidden rounded-[1.5rem] bg-black shadow-2xl ring-1 ring-white/15"
               initial={{
-                scale: 0.92,
-                y: 20,
+                scale: 0.95,
+                y: 15,
               }}
               animate={{
                 scale: 1,
                 y: 0,
               }}
               exit={{
-                scale: 0.92,
-                y: 20,
+                scale: 0.95,
+                y: 15,
               }}
               transition={{
                 type: "spring",
                 stiffness: 260,
                 damping: 24,
               }}
-              style={{ maxHeight: "680px" }}
+              style={{
+                maxHeight: "680px",
+              }}
               onClick={(event) => event.stopPropagation()}
             >
               <video
@@ -766,23 +552,7 @@ export function Showreel() {
               <button
                 type="button"
                 onClick={() => setSelectedVideo(null)}
-                className="
-                  absolute
-                  right-3
-                  top-3
-                  flex
-                  size-10
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-black/55
-                  text-white
-                  backdrop-blur-md
-                  transition
-                  hover:scale-105
-                  hover:bg-white
-                  hover:text-black
-                "
+                className="absolute right-3 top-3 flex size-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md transition hover:bg-white hover:text-black"
                 aria-label="Close video"
               >
                 <X className="size-5" />
