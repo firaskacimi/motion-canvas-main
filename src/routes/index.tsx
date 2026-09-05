@@ -9,7 +9,6 @@ import { Showreel } from "@/components/site/Showreel";
 import { Services } from "@/components/site/Services";
 import { About } from "@/components/site/About";
 import { Process } from "@/components/site/Process";
-import { Testimonials } from "@/components/site/Testimonials";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
@@ -44,7 +43,6 @@ function Index() {
         <Services />
         <About />
         <Process />
-        <Testimonials />
         <Contact />
       </main>
       <Footer />
