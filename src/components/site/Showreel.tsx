@@ -1,8 +1,7 @@
+
 import {
   motion,
   AnimatePresence,
-  useMotionValue,
-  useSpring,
 } from "motion/react";
 import { useEffect, useState } from "react";
 import {
@@ -10,54 +9,67 @@ import {
   ChevronRight,
   Play,
   Maximize2,
+  X,
 } from "lucide-react";
-import { heroCenter } from "@/lib/portfolio-data";
 import { SectionLabel } from "./Reveal";
 
 const videos = [
   {
-    src: "/videos/showreel-01.mp4",
-    title: "Showreel",
-    category: "Cinematic",
-    duration: "02:14",
+    src: "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617279/HTC_TEASER_LAST_VERSION_iytkce.mp4",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617279/HTC_TEASER_LAST_VERSION_iytkce.jpg",
+    title: "HTC Teaser",
+    category: "Brand Film",
+    duration: "Teaser",
   },
   {
-    src: "/videos/showreel-02.mp4",
-    title: "Commercial Work",
-    category: "Commercial",
-    duration: "01:42",
+    src: "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617279/ISE_ANNONCE_n7orty.mp4",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617279/ISE_ANNONCE_n7orty.jpg",
+    title: "ISE Annonce",
+    category: "Announcement",
+    duration: "Film",
   },
   {
-    src: "/videos/showreel-03.mp4",
-    title: "Motion Design",
-    category: "Motion",
-    duration: "01:58",
+    src: "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617280/VIDEO_ANNONCE_VERSION_FINAL_om3aqp.mp4",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617280/VIDEO_ANNONCE_VERSION_FINAL_om3aqp.jpg",
+    title: "Final Announcement",
+    category: "Campaign Film",
+    duration: "Film",
   },
   {
-    src: "/videos/showreel-04.mp4",
-    title: "Visual Experiments",
-    category: "Experimental",
-    duration: "01:36",
-  },
-
-  // You can add more videos here
-  {
-    src: "/videos/showreel-05.mp4",
-    title: "Event Film",
-    category: "Events",
-    duration: "01:28",
+    src: "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617281/MAI_VIDEO_ihnhqz.mp4",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617281/MAI_VIDEO_ihnhqz.jpg",
+    title: "Mai Video",
+    category: "Creative Film",
+    duration: "Film",
   },
   {
-    src: "/videos/showreel-06.mp4",
-    title: "Social Campaign",
-    category: "Social",
-    duration: "00:58",
+    src: "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617281/SIPHAL_x3q6ym.mp4",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617281/SIPHAL_x3q6ym.jpg",
+    title: "Siphal",
+    category: "Visual Story",
+    duration: "Film",
+  },
+  {
+    src: "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617282/PCE_VIDEO_ffrjkb.mp4",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617282/PCE_VIDEO_ffrjkb.jpg",
+    title: "PCE Video",
+    category: "Campaign Film",
+    duration: "Film",
   },
 ];
 
 export function Showreel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<
+    (typeof videos)[number] | null
+  >(null);
 
   /*
    * ----------------------------------------
@@ -83,17 +95,6 @@ export function Showreel() {
    * ----------------------------------------
    * CALCULATE CARD POSITION
    * ----------------------------------------
-   *
-   * Example with 6 videos:
-   *
-   *             FAR LEFT
-   *                 ↓
-   *       [ 5 ] [ 0 ] [ 1 ] [ 2 ]
-   *              ↑
-   *            ACTIVE
-   *
-   * Everything is calculated relative to the
-   * active card.
    */
 
   const getRelativePosition = (index: number) => {
@@ -138,13 +139,40 @@ export function Showreel() {
 
   /*
    * ----------------------------------------
+   * ESCAPE MODAL
+   * ----------------------------------------
+   */
+
+  useEffect(() => {
+    if (!selectedVideo) {
+      return;
+    }
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedVideo(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [selectedVideo]);
+
+  /*
+   * ----------------------------------------
    * SWIPE / DRAG
    * ----------------------------------------
    */
 
   const handleDragEnd = (
     _: MouseEvent | TouchEvent | PointerEvent,
-    info: { offset: { x: number }; velocity: { x: number } }
+    info: {
+      offset: { x: number };
+      velocity: { x: number };
+    }
   ) => {
     setIsDragging(false);
 
@@ -222,15 +250,15 @@ export function Showreel() {
           CAROUSEL
       ====================================================== */}
 
-      <div className="relative mt-14 w-full sm:mt-20">
+      <div className="relative mt-14 w-full px-5 sm:mt-20 sm:px-10 lg:px-16">
         <div
           className="
             relative
-            h-125
+            h-135
             w-full
-            overflow-hidden
-            sm:h-140
-            lg:h-155
+            overflow-visible
+            sm:h-150
+            lg:h-165
           "
           style={{
             perspective: "1600px",
@@ -245,75 +273,110 @@ export function Showreel() {
             const isActive = position === 0;
 
             /*
-             * Don't render infinitely many cards.
-             * Only show the active card + 2 cards on each side.
+             * ALL VIDEOS REMAIN MOUNTED.
+             *
+             * This is important because we want every video
+             * to autoplay and continue playing in the carousel.
              */
-            if (Math.abs(position) > 2) {
-              return null;
-            }
 
             /*
-             * Position of each card.
+             * Position:
              *
-             * Center:
-             *     0
-             *
-             * Left:
-             *    -1
-             *
-             * Right:
-             *     1
-             *
-             * Far left:
-             *    -2
-             *
-             * Far right:
-             *     2
+             * Center      = 0%
+             * Near left   = -82%
+             * Near right  = 82%
+             * Far left    = -155%
+             * Far right   = 155%
              */
 
             const x =
               position === 0
                 ? "0%"
                 : position === -1
-                  ? "-76%"
+                  ? "-82%"
                   : position === 1
-                    ? "76%"
+                    ? "82%"
                     : position === -2
-                      ? "-145%"
-                      : "145%";
+                      ? "-155%"
+                      : position === 2
+                        ? "155%"
+                        : position < 0
+                          ? "-220%"
+                          : "220%";
+
+            /*
+             * CENTER IS BIGGER THAN THE TWO BEHIND IT.
+             */
 
             const scale =
               position === 0
                 ? 1
                 : Math.abs(position) === 1
-                  ? 0.84
-                  : 0.7;
+                  ? 0.76
+                  : Math.abs(position) === 2
+                    ? 0.62
+                    : 0.5;
+
+            /*
+             * Opacity.
+             *
+             * The two adjacent videos remain clearly visible.
+             */
 
             const opacity =
               position === 0
                 ? 1
                 : Math.abs(position) === 1
-                  ? 0.55
-                  : 0.22;
+                  ? 0.7
+                  : Math.abs(position) === 2
+                    ? 0.3
+                    : 0;
+
+            /*
+             * Blur the background cards slightly.
+             */
 
             const blur =
               position === 0
                 ? "blur(0px)"
                 : Math.abs(position) === 1
                   ? "blur(1px)"
-                  : "blur(3px)";
+                  : Math.abs(position) === 2
+                    ? "blur(3px)"
+                    : "blur(5px)";
 
             return (
               <motion.div
                 key={video.src}
-                className={`absolute left-1/2 top-1/2 h-97.5 w-[min(78vw,720px)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2rem] sm:h-115 lg:h-125 grain group ring-1 ring-white/10 ${isActive ? "cursor-grab active:cursor-grabbing" : "cursor-pointer"}`}
+                className={`
+                  absolute
+                  left-1/2
+                  top-1/2
+                  aspect-9/16
+                  w-[min(70vw,420px)]
+                  -translate-x-1/2
+                  -translate-y-1/2
+                  overflow-hidden
+                  rounded-[2rem]
+                  grain
+                  group
+                  ring-1
+                  ring-white/10
+                  ${
+                    isActive
+                      ? "cursor-grab active:cursor-grabbing"
+                      : "cursor-pointer"
+                  }
+                `}
                 data-video-card
                 animate={{
                   x,
                   scale,
                   opacity,
                   filter: blur,
-                  zIndex: isActive ? 30 : 20 - Math.abs(position),
+                  zIndex: isActive
+                    ? 30
+                    : 20 - Math.abs(position),
                 }}
                 transition={{
                   x: {
@@ -347,8 +410,12 @@ export function Showreel() {
                   scale: 1.02,
                 }}
                 onClick={() => {
-                  if (!isActive && !isDragging) {
-                    setCurrentIndex(index);
+                  if (!isDragging) {
+                    if (!isActive) {
+                      setCurrentIndex(index);
+                    }
+
+                    setSelectedVideo(video);
                   }
                 }}
                 style={{
@@ -361,13 +428,13 @@ export function Showreel() {
 
                 <video
                   src={video.src}
-                  poster={heroCenter}
+                  poster={video.poster}
                   className="absolute inset-0 h-full w-full object-cover"
-                  autoPlay={isActive}
+                  autoPlay
                   muted
                   loop
                   playsInline
-                  preload={isActive ? "auto" : "metadata"}
+                  preload="auto"
                 />
 
                 {/* ===========================================
@@ -377,7 +444,7 @@ export function Showreel() {
                 <div
                   className={`
                     absolute inset-0
-                    transition-opacity    
+                    transition-opacity
                     duration-500
                     ${
                       isActive
@@ -399,8 +466,14 @@ export function Showreel() {
 
                 {isActive && (
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{
+                      opacity: 0,
+                      scale: 0.8,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                    }}
                     transition={{
                       duration: 0.45,
                       delay: 0.1,
@@ -440,13 +513,13 @@ export function Showreel() {
                       </span>
 
                       <h3
-                        className={`
+                        className="
                           font-display
                           text-2xl
                           text-white
                           sm:text-3xl
                           lg:text-4xl
-                        `}
+                        "
                       >
                         {video.title}
                       </h3>
@@ -461,19 +534,7 @@ export function Showreel() {
                         type="button"
                         onClick={(event) => {
                           event.stopPropagation();
-
-                          const videoElement =
-                            event.currentTarget
-                              .closest("[data-video-card]")
-                              ?.querySelector("video");
-
-                          if (videoElement) {
-                            if (document.fullscreenElement) {
-                              document.exitFullscreen();
-                            } else {
-                              videoElement.requestFullscreen?.();
-                            }
-                          }
+                          setSelectedVideo(video);
                         }}
                         className="
                           hidden
@@ -492,7 +553,7 @@ export function Showreel() {
                           hover:text-black
                           sm:flex
                         "
-                        aria-label="Fullscreen video"
+                        aria-label="Open video"
                       >
                         <Maximize2 className="size-4" />
                       </button>
@@ -507,16 +568,16 @@ export function Showreel() {
               SIDE FADE
           ================================================== */}
 
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-40 w-[12%] bg-linear-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-40 w-[4%] bg-linear-to-r from-background to-transparent" />
 
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-40 w-[12%] bg-linear-to-l from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-40 w-[4%] bg-linear-to-l from-background to-transparent" />
         </div>
 
         {/* ===================================================
             CONTROLS
         ==================================================== */}
 
-        <div className="relative z-50 mt-2 flex items-center justify-center gap-5 sm:mt-5">
+        <div className="relative z-50 mt-6 flex items-center justify-center gap-5 sm:mt-8">
           {/* PREVIOUS */}
 
           <button
@@ -640,6 +701,93 @@ export function Showreel() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* =====================================================
+          FULLSCREEN MODAL
+      ====================================================== */}
+
+      <AnimatePresence>
+        {selectedVideo && (
+          <motion.div
+            className="fixed inset-0 z-100 flex items-center justify-center bg-black/85 p-5 backdrop-blur-md sm:p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedVideo(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selectedVideo.title} video`}
+          >
+            <motion.div
+              className="
+                relative
+                aspect-9/16
+                w-[min(88vw,520px)]
+                overflow-hidden
+                rounded-[1.5rem]
+                bg-black
+                shadow-2xl
+                ring-1
+                ring-white/15
+              "
+              initial={{
+                scale: 0.92,
+                y: 20,
+              }}
+              animate={{
+                scale: 1,
+                y: 0,
+              }}
+              exit={{
+                scale: 0.92,
+                y: 20,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 24,
+              }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <video
+                src={selectedVideo.src}
+                poster={selectedVideo.poster}
+                className="h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+              />
+
+              <button
+                type="button"
+                onClick={() => setSelectedVideo(null)}
+                className="
+                  absolute
+                  right-3
+                  top-3
+                  flex
+                  size-10
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-black/55
+                  text-white
+                  backdrop-blur-md
+                  transition
+                  hover:scale-105
+                  hover:bg-white
+                  hover:text-black
+                "
+                aria-label="Close video"
+              >
+                <X className="size-5" />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

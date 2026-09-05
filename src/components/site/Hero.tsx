@@ -1,8 +1,11 @@
 import { motion } from "motion/react";
 import { Play } from "lucide-react";
-import { frames, heroCenter } from "@/lib/portfolio-data";
+import { frames } from "@/lib/portfolio-data";
 import { ReelRow } from "./ReelRow";
 import { MagneticButton } from "./MagneticButton";
+
+const heroVideo =
+  "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788619258/logo_animation_esldrc.mp4";
 
 const rotate = (arr: typeof frames, n: number) => [...arr.slice(n), ...arr.slice(0, n)];
 
@@ -84,11 +87,13 @@ export function Hero() {
                 data-cursor="view"
                 className="group grain glow-ring relative aspect-video overflow-hidden rounded-[1.75rem] ring-1 ring-white/10"
               >
-                <img
-                  src={heroCenter}
-                  alt="Showreel preview — cinematic aerial frame at dawn"
-                  width={1600}
-                  height={900}
+                <video
+                  src={heroVideo}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
                   className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/25" />

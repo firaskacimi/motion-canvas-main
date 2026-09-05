@@ -1,9 +1,35 @@
-import { motion, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useAnimationControls,
+  useReducedMotion,
+} from "motion/react";
+import { useEffect } from "react";
 import { projects } from "@/lib/portfolio-data";
 import { Reveal, SectionLabel } from "./Reveal";
 
+const featuredDesign =
+  "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788618188/Screenshot_2026-09-05_150154_aq4ox0.png";
+
 export function SelectedWork() {
   const shouldReduceMotion = useReducedMotion();
+  const carouselControls = useAnimationControls();
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      return;
+    }
+
+    void carouselControls.start({
+      rotateY: 360,
+      transition: {
+        duration: 12,
+        repeat: Infinity,
+        ease: "linear",
+      },
+    });
+
+    return () => carouselControls.stop();
+  }, [carouselControls, shouldReduceMotion]);
 
   return (
     <section
@@ -18,8 +44,23 @@ export function SelectedWork() {
         </h2>
       </Reveal>
 
+      <Reveal>
+        <figure className="mx-auto mt-14 max-w-5xl overflow-hidden rounded-[1.5rem] bg-surface ring-1 ring-white/10 sm:mt-20">
+          <img
+            src={featuredDesign}
+            alt="Featured campaign design"
+            width={1600}
+            height={900}
+            className="max-h-[70vh] w-full object-contain"
+          />
+          <figcaption className="border-t border-border px-5 py-4 text-[0.65rem] tracking-[0.28em] text-primary uppercase sm:px-7">
+            Featured Design
+          </figcaption>
+        </figure>
+      </Reveal>
+
       {/* 3D PROJECT CAROUSEL */}
-      <div className="relative mt-14 h-130 sm:mt-20 sm:h-155">
+      <div className="relative mt-16 h-130 sm:mt-24 sm:h-155">
         <div
           className="absolute inset-0 flex items-center justify-center"
           style={{
@@ -32,26 +73,11 @@ export function SelectedWork() {
             style={{
               transformStyle: "preserve-3d",
             }}
-            animate={
-              shouldReduceMotion
-                ? {}
-                : {
-                    rotateY: 360,
-                  }
-            }
-            transition={
-              shouldReduceMotion
-                ? {}
-                : {
-                    duration: 24,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }
-            }
+            animate={shouldReduceMotion ? {} : carouselControls}
           >
             {projects.map((p, i) => {
               const angle = (360 / projects.length) * i;
-              const radius = 560;
+              const radius = 680;
 
               return (
                 <div
@@ -69,6 +95,19 @@ export function SelectedWork() {
                   <article
                     data-cursor="view"
                     className="group relative h-75 w-112.5 overflow-hidden rounded-[1.5rem] bg-surface ring-1 ring-white/5 sm:h-90 sm:w-135"
+                    onMouseEnter={() => carouselControls.stop()}
+                    onMouseLeave={() => {
+                      if (!shouldReduceMotion) {
+                        void carouselControls.start({
+                          rotateY: 360,
+                          transition: {
+                            duration: 13,
+                            repeat: Infinity,
+                            ease: "linear",
+                          },
+                        });
+                      }
+                    }}
                   >
                     <div className="relative h-full w-full overflow-hidden">
                       {p.video ? (
@@ -95,7 +134,7 @@ export function SelectedWork() {
                           loading="lazy"
                           width={1280}
                           height={720}
-                          className="h-full w-full object-cover opacity-80 saturate-[0.9] transition-all duration-900 ease-out group-hover:scale-[1.05] group-hover:opacity-100 group-hover:saturate-100"
+                          className="h-full w-full object-contain bg-surface opacity-80 saturate-[0.9] transition-all duration-900 ease-out group-hover:scale-[1.05] group-hover:opacity-100 group-hover:saturate-100"
                         />
                       )}
 

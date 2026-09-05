@@ -1,11 +1,3 @@
-import reel01 from "@/assets/reel-01.jpg";
-import reel02 from "@/assets/reel-02.jpg";
-import reel03 from "@/assets/reel-03.jpg";
-import reel04 from "@/assets/reel-04.jpg";
-import reel05 from "@/assets/reel-05.jpg";
-import reel06 from "@/assets/reel-06.jpg";
-import reel07 from "@/assets/reel-07.jpg";
-import reel08 from "@/assets/reel-08.jpg";
 import heroCenter from "@/assets/hero-center.jpg";
 import portrait from "@/assets/portrait.jpg";
 
@@ -21,14 +13,102 @@ export type Frame = {
 };
 
 export const frames: Frame[] = [
-  { id: "f1", poster: reel01, title: "Night Signals", category: "Cinematic" },
-  { id: "f2", poster: reel02, title: "Studio 04", category: "Fashion Edit" },
-  { id: "f3", poster: reel03, title: "Noir Bottle", category: "Product" },
-  { id: "f4", poster: reel04, title: "Amber Stage", category: "Music Visual" },
-  { id: "f5", poster: reel05, title: "Fluid Type", category: "Motion Graphics" },
-  { id: "f6", poster: reel06, title: "Dune Grade", category: "Color Grading" },
-  { id: "f7", poster: reel07, title: "Street Cuts", category: "Social Edit" },
-  { id: "f8", poster: reel08, title: "Late Drive", category: "Short Form" },
+  {
+    id: "reel-htc",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617279/HTC_TEASER_LAST_VERSION_iytkce.jpg",
+    video:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617279/HTC_TEASER_LAST_VERSION_iytkce.mp4",
+    title: "HTC Teaser",
+    category: "Brand Film",
+  },
+  {
+    id: "reel-ise",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617279/ISE_ANNONCE_n7orty.jpg",
+    video:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617279/ISE_ANNONCE_n7orty.mp4",
+    title: "ISE Annonce",
+    category: "Announcement",
+  },
+  {
+    id: "reel-final-announcement",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617280/VIDEO_ANNONCE_VERSION_FINAL_om3aqp.jpg",
+    video:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617280/VIDEO_ANNONCE_VERSION_FINAL_om3aqp.mp4",
+    title: "Final Announcement",
+    category: "Campaign Film",
+  },
+  {
+    id: "reel-mai",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617281/MAI_VIDEO_ihnhqz.jpg",
+    video:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617281/MAI_VIDEO_ihnhqz.mp4",
+    title: "Mai Video",
+    category: "Creative Film",
+  },
+  {
+    id: "reel-siphal",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617281/SIPHAL_x3q6ym.jpg",
+    video:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617281/SIPHAL_x3q6ym.mp4",
+    title: "Siphal",
+    category: "Visual Story",
+  },
+  {
+    id: "reel-pce",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/so_0/v1788617282/PCE_VIDEO_ffrjkb.jpg",
+    video:
+      "https://res.cloudinary.com/dgwcqsnn6/video/upload/v1788617282/PCE_VIDEO_ffrjkb.mp4",
+    title: "PCE Video",
+    category: "Campaign Film",
+  },
+  {
+    id: "design-eid",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617998/eid-post_vgltzm.jpg",
+    title: "Eid Post",
+    category: "Campaign Artwork",
+  },
+  {
+    id: "design-discover-team",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617998/discover-tr-team_ustgcp.jpg",
+    title: "Discover TR Team",
+    category: "Team Campaign",
+  },
+  {
+    id: "design-exploration-event",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617998/exploration-event_oq1tii.jpg",
+    title: "Exploration Event",
+    category: "Event Campaign",
+  },
+  {
+    id: "design-udat",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617974/charte_graphique_udat_2025_jaiei0.png",
+    title: "UDAT 2025",
+    category: "Brand Identity",
+  },
+  {
+    id: "design-htc",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617974/charte_graphique_HTC_hrpzaz.png",
+    title: "HTC Brand Guide",
+    category: "Brand Identity",
+  },
+  {
+    id: "design-compounding",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617973/charte_graphique_compounding_event_lqyapt.png",
+    title: "Compounding Event",
+    category: "Brand Identity",
+  },
 ];
 
 export type Project = {
@@ -45,63 +125,63 @@ export type Project = {
 export const projects: Project[] = [
   {
     index: "01",
-    title: "Brand Film",
-    client: "Meridian Studio",
-    category: "Cinematic Edit",
-    year: "2025",
-    description:
-      "A three-minute origin film cut from 40 hours of documentary footage. Paced for tension, graded warm and heavy.",
-    poster: reel01,
+    title: "Eid Post",
+    client: "Social Design",
+    category: "Campaign Artwork",
+    year: "2026",
+    description: "A celebratory social design created for Eid communication.",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617998/eid-post_vgltzm.jpg",
   },
   {
     index: "02",
-    title: "Social Campaign",
-    client: "Ovate Athletics",
-    category: "Short Form",
-    year: "2025",
-    description:
-      "Twenty-four vertical cuts built from a single shoot day. Hooks in the first 0.6 seconds, captions animated in-house.",
-    poster: reel07,
+    title: "Discover TR Team",
+    client: "Brand Design",
+    category: "Team Campaign",
+    year: "2026",
+    description: "A team-focused campaign visual with a bold editorial direction.",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617998/discover-tr-team_ustgcp.jpg",
   },
   {
     index: "03",
-    title: "Music Video",
-    client: "KAVE",
-    category: "Performance",
-    year: "2024",
-    description:
-      "Strobe-synced cutting, hand-tracked light leaks and a grade pushed to burnt amber.",
-    poster: reel04,
+    title: "Exploration Event",
+    client: "Event Design",
+    category: "Event Campaign",
+    year: "2026",
+    description: "Visual communication for an exploration-focused event experience.",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617998/exploration-event_oq1tii.jpg",
   },
   {
     index: "04",
-    title: "Product Commercial",
-    client: "Dahlia Parfums",
-    category: "Commercial",
-    year: "2024",
-    description:
-      "Macro coverage, speed-ramped pours and a soundtrack cut to the frame. Delivered in six aspect ratios.",
-    poster: reel03,
+    title: "UDAT 2025",
+    client: "UDAT",
+    category: "Brand Identity",
+    year: "2025",
+    description: "A complete graphic direction developed for the UDAT 2025 identity.",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617974/charte_graphique_udat_2025_jaiei0.png",
   },
   {
     index: "05",
-    title: "Motion Design",
-    client: "Frame Festival",
-    category: "Titles & Graphics",
-    year: "2024",
-    description:
-      "Title system, transitions and animated typography for a festival identity that had to survive the big screen.",
-    poster: reel05,
+    title: "HTC Brand Guide",
+    client: "HTC",
+    category: "Brand Identity",
+    year: "2025",
+    description: "A visual identity system created for the HTC brand.",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617974/charte_graphique_HTC_hrpzaz.png",
   },
   {
     index: "06",
-    title: "Short-Form Content",
-    client: "Independent",
-    category: "Series",
-    year: "2023",
-    description:
-      "An ongoing series of experiments — rhythm tests, grade studies and edits made purely for the cut.",
-    poster: reel06,
+    title: "Compounding Event",
+    client: "Event Identity",
+    category: "Brand Identity",
+    year: "2025",
+    description: "A graphic identity developed for the Compounding event.",
+    poster:
+      "https://res.cloudinary.com/dgwcqsnn6/image/upload/v1788617973/charte_graphique_compounding_event_lqyapt.png",
   },
 ];
 
