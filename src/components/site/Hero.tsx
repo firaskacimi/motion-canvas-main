@@ -138,7 +138,10 @@ export function Hero() {
         </p>
         <div className="flex flex-wrap gap-3">
           <MagneticButton href="#work">Explore my journey</MagneticButton>
-          <MagneticButton href="#contact" variant="ghost">
+          <MagneticButton
+            href="https://drive.google.com/file/d/1ZhkJNZlOj-rlLBGZ9qNwzlfGFgpWw2NU/view?usp=sharing"
+            variant="ghost"
+          >
             Discover my candidacy
           </MagneticButton>
         </div>

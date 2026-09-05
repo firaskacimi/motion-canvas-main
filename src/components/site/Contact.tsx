@@ -32,8 +32,9 @@ export function Contact() {
               Marketing & Publicité volet that is more structured, more formative, more coherent,
               more strategic and more sustainable.
             </p>
-            {/* TODO: Replace with final written candidacy link */}
-            <MagneticButton href="#">Discover my candidacy</MagneticButton>
+            <MagneticButton href="https://drive.google.com/file/d/1ZhkJNZlOj-rlLBGZ9qNwzlfGFgpWw2NU/view?usp=sharing">
+              Discover my candidacy
+            </MagneticButton>
           </div>
         </Reveal>
 

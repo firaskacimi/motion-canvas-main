@@ -62,7 +62,9 @@ export function Navbar() {
 
           <div className="flex items-center gap-3">
             <a
-              href="#contact"
+              href="https://drive.google.com/file/d/1ZhkJNZlOj-rlLBGZ9qNwzlfGFgpWw2NU/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
               data-cursor="go"
               className="hidden rounded-full border border-border px-5 py-2.5 text-[0.65rem] tracking-[0.22em] uppercase transition-colors hover:border-primary hover:text-primary lg:inline-flex"
             >
@@ -118,7 +120,9 @@ export function Navbar() {
             </ul>
             <div className="px-6 pb-12">
               <a
-                href="#contact"
+                href="https://drive.google.com/file/d/1ZhkJNZlOj-rlLBGZ9qNwzlfGFgpWw2NU/view?usp=sharing"
+                target="_blank"
+                rel="noreferrer"
                 onClick={() => setOpen(false)}
                 className="flex w-full items-center justify-center rounded-full bg-primary px-6 py-4 text-[0.7rem] tracking-[0.22em] text-primary-foreground uppercase"
               >

@@ -85,43 +85,50 @@ export function SelectedWork() {
 
       {/* FEATURED DESIGN */}
       <Reveal>
-        <figure
-          className="
-            mx-auto mt-12 w-full max-w-5xl
-            overflow-hidden rounded-[1.5rem]
-            bg-surface ring-1 ring-white/10
-            sm:mt-20
-          "
+        <a
+          href="https://drive.google.com/file/d/1ZhkJNZlOj-rlLBGZ9qNwzlfGFgpWw2NU/view?usp=sharing"
+          target="_blank"
+          rel="noreferrer"
+          className="block"
         >
-          <img
-            src={featuredDesign}
-            alt="Featured campaign design"
-            width={1600}
-            height={900}
+          <figure
             className="
-              block
-              max-h-[70vh]
-              w-full
-              object-contain
-            "
-          />
-
-          <figcaption
-            className="
-              border-t border-border
-              px-5 py-4
-              text-[0.6rem]
-              uppercase
-              tracking-[0.24em]
-              text-primary
-              sm:px-7
-              sm:text-[0.65rem]
-              sm:tracking-[0.28em]
+              mx-auto mt-12 w-full max-w-5xl
+              overflow-hidden rounded-[1.5rem]
+              bg-surface ring-1 ring-white/10
+              sm:mt-20
             "
           >
-            Featured Design
-          </figcaption>
-        </figure>
+            <img
+              src={featuredDesign}
+              alt="Featured campaign design"
+              width={1600}
+              height={900}
+              className="
+                block
+                max-h-[70vh]
+                w-full
+                object-contain
+              "
+            />
+
+            <figcaption
+              className="
+                border-t border-border
+                px-5 py-4
+                text-[0.6rem]
+                uppercase
+                tracking-[0.24em]
+                text-primary
+                sm:px-7
+                sm:text-[0.65rem]
+                sm:tracking-[0.28em]
+              "
+            >
+              Featured Design
+            </figcaption>
+          </figure>
+        </a>
       </Reveal>
 
       {/* ============================================================
