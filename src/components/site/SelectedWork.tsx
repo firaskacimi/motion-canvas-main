@@ -94,7 +94,7 @@ export function SelectedWork() {
                 >
                   <article
                     data-cursor="view"
-                    className="group relative h-75 w-112.5 overflow-hidden rounded-[1.5rem] bg-surface ring-1 ring-white/5 sm:h-90 sm:w-135"
+                    className="group relative aspect-4/3 h-auto w-[78vw] overflow-hidden rounded-[1.5rem] bg-surface ring-1 ring-white/5 sm:aspect-auto sm:h-90 sm:w-135"
                     onMouseEnter={() => carouselControls.stop()}
                     onMouseLeave={() => {
                       if (!shouldReduceMotion) {

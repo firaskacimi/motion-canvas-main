@@ -105,6 +105,12 @@
   }
 }
 
+@media (max-width: 639px) {
+  body {
+    zoom: 1;
+  }
+}
+
 @utility font-display {
   font-family: var(--font-display);
   font-weight: 400;

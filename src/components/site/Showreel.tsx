@@ -722,7 +722,9 @@ export function Showreel() {
               className="
                 relative
                 aspect-9/16
-                w-[min(88vw,520px)]
+                h-[82vh]
+                w-auto
+                max-w-[88vw]
                 overflow-hidden
                 rounded-[1.5rem]
                 bg-black
@@ -747,6 +749,7 @@ export function Showreel() {
                 stiffness: 260,
                 damping: 24,
               }}
+              style={{ maxHeight: "680px" }}
               onClick={(event) => event.stopPropagation()}
             >
               <video
